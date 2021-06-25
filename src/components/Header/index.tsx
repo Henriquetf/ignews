@@ -1,4 +1,5 @@
 import Image from 'next/image';
+import Link from 'next/link';
 
 import styles from './styles.module.scss';
 
@@ -9,7 +10,11 @@ export function Header() {
   return (
     <header className={styles.headerContainer}>
       <div className={styles.headerContent}>
-        <Image src={logo} alt="ig.news" />
+        <Link href="/">
+          <a>
+            <Image src={logo} alt="ig.news" />
+          </a>
+        </Link>
 
         <nav className={styles.headerNav}>
           <a href="/home" className={styles.active}>
