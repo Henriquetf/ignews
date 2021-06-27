@@ -4,10 +4,11 @@
     "project": "./tsconfig.json"
   },
   "rules": {
+    "import/prefer-default-export": "off",
     "jsx-a11y/anchor-is-valid": "off",
     "no-restricted-syntax": "off",
-    "react/react-in-jsx-scope": "off",
-    "import/prefer-default-export": "off",
-    "react/jsx-props-no-spreading": "off"
+    "react/jsx-props-no-spreading": "off",
+    "react/no-danger": "off",
+    "react/react-in-jsx-scope": "off"
   }
 }

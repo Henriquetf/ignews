@@ -1,4 +1,5 @@
 import { signIn, useSession } from 'next-auth/client';
+import { useRouter } from 'next/dist/client/router';
 import { useCallback } from 'react';
 
 import { postSubscribe } from '../../services/api';
@@ -11,10 +12,17 @@ interface SubscribeButtonProps {
 
 export function SubscribeButton({ priceId }: SubscribeButtonProps) {
   const [session] = useSession();
+  const router = useRouter();
 
   const handleSubscribe = useCallback(async () => {
     if (!session) {
       signIn('github');
+      return;
+    }
+
+    if (session.activeSubscription) {
+      router.push('/posts');
+
       return;
     }
 
@@ -29,7 +37,7 @@ export function SubscribeButton({ priceId }: SubscribeButtonProps) {
     } catch (err) {
       alert(err.message);
     }
-  }, [session]);
+  }, [session, router]);
 
   return (
     <button type="button" className={styles.subscribeButton} onClick={handleSubscribe}>

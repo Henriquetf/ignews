@@ -2,9 +2,9 @@ import Image from 'next/image';
 import Link from 'next/link';
 
 import styles from './styles.module.scss';
-
 import logo from '../../../public/images/logo.svg';
 import { SignInButton } from '../SignInButton';
+import { ActiveLink } from '../ActiveLink';
 
 export function Header() {
   return (
@@ -17,10 +17,12 @@ export function Header() {
         </Link>
 
         <nav className={styles.headerNav}>
-          <a href="/home" className={styles.active}>
-            Home
-          </a>
-          <a href="/posts">Posts</a>
+          <ActiveLink activeClassName={styles.active} href="/">
+            <a>Home</a>
+          </ActiveLink>
+          <ActiveLink activeClassName={styles.active} href="/posts" prefetch>
+            <a>Posts</a>
+          </ActiveLink>
         </nav>
 
         <SignInButton />

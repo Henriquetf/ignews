@@ -10,14 +10,14 @@ import styles from './home.module.scss';
 import avatar from '../../public/images/avatar.svg';
 import { stripe } from '../services/stripe';
 
-interface HomeProps {
+interface HomePageProps {
   product: {
     priceId: string;
     amount: string;
   };
 }
 
-export default function Home({ product }: HomeProps) {
+export default function HomePage({ product }: HomePageProps) {
   return (
     <>
       <Head>
@@ -48,7 +48,7 @@ export default function Home({ product }: HomeProps) {
   );
 }
 
-export const getStaticProps: GetStaticProps<HomeProps> = async () => {
+export const getStaticProps: GetStaticProps<HomePageProps> = async () => {
   const price = await stripe.prices.retrieve(process.env.STRIPE_SUBSCRIPTION_PRODUCT_ID);
 
   const product = {
